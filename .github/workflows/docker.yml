@@ -18,9 +18,14 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Debug SSH info (temporal)
+        run: echo "Connecting to ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}"
+
       - name: Ensure target folder exists
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "mkdir -p /var/www/n8n-automatizacion"
+          ssh -o StrictHostKeyChecking=no -T ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            mkdir -p /var/www/n8n-automatizacion
+          EOF
 
       - name: Copy files to server
         run: |
@@ -28,13 +33,14 @@ jobs:
 
       - name: Deploy stack via SSH
         run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+          ssh -T ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
             cd /var/www/n8n-automatizacion
             docker build -t n8n-landing .
             docker stop n8n-landing || true
             docker rm n8n-landing || true
             docker run -d --name n8n-landing -p 3000:3000 n8n-landing
           EOF
+
 
 
 
