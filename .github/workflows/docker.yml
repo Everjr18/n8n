@@ -34,7 +34,7 @@ jobs:
       - name: Deploy stack via SSH
         run: |
           ssh -T ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            cd /var/www/n8n-automatizacion
+            cd /var/www/n8n-automatizacion/automatizacion
             docker build -t n8n-landing .
             docker stop n8n-landing || true
             docker rm n8n-landing || true
