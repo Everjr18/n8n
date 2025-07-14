@@ -1,0 +1,36 @@
+export const es = {
+	title: "Automatiza tu negocio con n8n",
+	description:
+		"Crea flujos automáticos para ahorrar tiempo, reducir errores y escalar tu operación.",
+	contactButton: "Escríbenos por WhatsApp",
+	howItWorksTitle: "¿Cómo funciona?",
+	step1: "🧠 Hablamos sobre tu necesidad",
+	step2: "🔧 Diseñamos un flujo automatizado",
+	step3: "🚀 Lo integramos y queda funcionando",
+	servicesTitle: "¿Qué puedo automatizar por ti?",
+	service1: "Automatización de tareas repetitivas",
+	service2: "Envío automático de correos y alertas",
+	service3: "Integración con WhatsApp y Telegram",
+	service4: "Actualización de Google Sheets o bases de datos",
+	service5: "Flujos lógicos personalizados con condiciones",
+	plansTitle: "Planes de automatización",
+	plan1Title: "🔹 Plan Básico",
+	plan1Desc: "1 flujo simple (Google Sheets, email)",
+	plan2Title: "🔸 Plan Pro",
+	plan2Desc: "Hasta 5 automatizaciones con bases de datos",
+	plan3Title: "🔧 Plan Personalizado",
+	plan3Desc: "Diseño e integración según tus necesidades",
+	casesTitle: "Casos reales de automatización",
+	case1:
+		"✅ Un e-commerce automatizó su sistema de pedidos y ahorra 15 horas a la semana.",
+	case2:
+		"✅ Clínica que notifica automáticamente a sus pacientes por WhatsApp.",
+	case3:
+		"✅ Startup que conecta su CRM con Google Sheets sin escribir una línea de código.",
+	trustTitle: "¿Por qué confiar en nosotros?",
+	trust1: "🔒 Privacidad garantizada: tu información es segura",
+	trust2: "🧑‍💻 100% sin código: tú solo explicas lo que necesitas",
+	trust3: "🎯 Trabajamos 1 a 1, con atención personalizada",
+	trust4: "🚀 Sin riesgos: te muestro antes cómo funcionará",
+	footer: "Automatizaciones con n8n. Todos los derechos reservados.",
+};

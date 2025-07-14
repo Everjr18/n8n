@@ -1,0 +1,32 @@
+# Etapa 1: build
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+# Transpilar el next.config.ts (importante si estás usando .ts)
+RUN npm install -g tsx
+RUN tsx scripts/build-next-config.ts || echo "No ts build script for config"
+
+RUN npm run build
+
+# Etapa 2: producción
+FROM node:18-alpine AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/.next .next
+COPY --from=builder /app/public public
+COPY --from=builder /app/next.config.js ./     # <- cuidado si usas .ts!
+COPY --from=builder /app/node_modules node_modules
+
+EXPOSE 3000
+
+CMD ["npx", "next", "start"]
