@@ -20,7 +20,7 @@ jobs:
 
       - name: Ensure target folder exists
         run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "mkdir -p /var/www/n8n-automatizacion"
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "mkdir -p /var/www/n8n-automatizacion"
 
       - name: Copy files to server
         run: |
