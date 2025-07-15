@@ -1,3 +1,4 @@
+# .github/workflows/deploy.yml
 name: Deploy to VPS
 
 on:
@@ -23,20 +24,16 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Ensure target folder exists
+      - name: Copy files to VPS
+        run: |
+          rsync -avz --delete --exclude='.git' --exclude='node_modules' ./ \
+          ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/n8n-automatizacion/
+
+      - name: Deploy with Docker Swarm
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            mkdir -p /var/www/n8n-automatizacion
-          EOF
-
-      - name: Copy files to server
-        run: |
-          rsync -avz --delete --exclude='.git' --exclude='node_modules' ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/n8n-automatizacion/
-
-      - name: Deploy with Docker Compose
-        run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            cd /var/www/n8n-automatizacion/automatizacion
-            docker compose -f docker-compose.yml down
-            docker compose -f docker-compose.yml up -d --build
+            cd /var/www/n8n-automatizacion
+            docker stack rm n8n-landing || true
+            sleep 5
+            docker stack deploy -c docker-compose.yml n8n-landing
           EOF
