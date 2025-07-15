@@ -13,32 +13,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up SSH
+      - name: Set up SSH agent
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Debug SSH info (temporal)
-        run: echo "Connecting to ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}"
-
-      - name: Ensure target folder exists
-        run: |
-          ssh -o StrictHostKeyChecking=no -T ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            mkdir -p /var/www/n8n-automatizacion
-          EOF
-
-      - name: Copy files to server
+      - name: Sync files with rsync
         run: |
           rsync -avz --delete --exclude='.git' --exclude='node_modules' ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/n8n-automatizacion/
 
-      - name: Deploy stack via SSH
+      - name: Restart Docker Compose
         run: |
-          ssh -T ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
             cd /var/www/n8n-automatizacion/automatizacion
-            docker build -t n8n-landing .
-            docker stop n8n-landing || true
-            docker rm n8n-landing || true
-            docker run -d --name n8n-landing -p 3000:3000 n8n-landing
+            docker compose down
+            docker compose up --build -d
           EOF
 
 
