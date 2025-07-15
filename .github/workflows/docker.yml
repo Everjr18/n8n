@@ -36,7 +36,7 @@ jobs:
       - name: Deploy with Docker Compose
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            cd /var/www/n8n-automatizacion
+            cd /var/www/n8n-automatizacion/automatizacion
             docker compose -f docker-compose.yml down
             docker compose -f docker-compose.yml up -d --build
           EOF
