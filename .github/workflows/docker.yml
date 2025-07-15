@@ -32,5 +32,5 @@ jobs:
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
             docker stack rm n8n-landing || true
             sleep 5
-            docker stack deploy -c /var/www/n8n-automatizacion/automatizacion/docker-compose.yml n8n-landing
+            docker stack deploy -c /var/www/n8n-automatizacion/docker-compose.yml n8n-landing
           EOF
