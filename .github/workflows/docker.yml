@@ -20,30 +20,18 @@ jobs:
 
       - name: Add VPS to known_hosts
         run: |
-          mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
-
-      - name: Debug SSH info
-        run: echo "Connecting to ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}"
-
-      - name: Ensure target folder exists
-        run: |
-          ssh -T ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            mkdir -p /var/www/n8n-automatizacion
-          EOF
 
       - name: Sync files with rsync
         run: |
           rsync -avz --delete --exclude='.git' --exclude='node_modules' ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/n8n-automatizacion/
 
-      - name: Deploy stack via SSH
+      - name: Deploy with Docker Compose
         run: |
-          ssh -T ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            cd /var/www/n8n-automatizacion/automatizacion
-            docker build -t n8n-landing .
-            docker stop n8n-landing || true
-            docker rm n8n-landing || true
-            docker run -d --name n8n-landing -p 3000:3000 n8n-landing
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            cd /var/www/n8n-automatizacion
+            docker compose -f docker-compose.yml down
+            docker compose -f docker-compose.yml up -d --build
           EOF
 
 
