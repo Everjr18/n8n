@@ -6,7 +6,7 @@ export default function Whatsapp() {
 	return (
 		<section id="whatsapp">
 			<FloatingWhatsApp
-				phoneNumber="+573053335489"
+				phoneNumber="+573003774663"
 				accountName="Automatizaciones con n8n"
 				allowEsc
 				notification
