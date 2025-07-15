@@ -2,18 +2,23 @@ version: '3.8'
 
 services:
   n8n-landing:
+    image: n8n-landing:latest
     build:
       context: .
       dockerfile: Dockerfile
+    restart: always
     networks:
       - automationnet
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.n8n-landing.rule=Host(`services.automation.net.ar`)"
-      - "traefik.http.routers.n8n-landing.entrypoints=web"
-      - "traefik.http.routers.n8n-landing.tls=true"
-      - "traefik.http.routers.n8n-landing.tls.certresolver=letsencryptresolver"
-      - "traefik.http.services.n8n-landing.loadbalancer.server.port=3000"
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.n8n-landing.rule=Host(`services.automation.net.ar`)"
+        - "traefik.http.routers.n8n-landing.entrypoints=websecure"
+        - "traefik.http.routers.n8n-landing.tls=true"
+        - "traefik.http.routers.n8n-landing.tls.certresolver=letsencryptresolver"
+        - "traefik.http.services.n8n-landing.loadbalancer.server.port=3000"
+    working_dir: /app
+    command: npx next start -p 3000
 
 networks:
   automationnet:
