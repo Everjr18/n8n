@@ -8,10 +8,6 @@ RUN npm install
 
 COPY . .
 
-# Instala tsx para compilar archivos .ts como next.config.ts
-RUN npm install -g tsx
-RUN tsx scripts/build-next-config.ts || echo "No ts build script for config"
-
 # Construye la aplicación Next.js
 RUN npm run build
 
@@ -30,5 +26,6 @@ COPY --from=builder /app/node_modules node_modules
 
 EXPOSE 3000
 
-CMD ["npx", "next", "start"]
+CMD ["npx", "next", "start", "-p", "3000"]
+
 
