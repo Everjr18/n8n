@@ -3,10 +3,6 @@ version: '3.8'
 services:
   n8n-landing:
     image: n8n-landing:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: always
     networks:
       - automationnet
     deploy:
@@ -23,3 +19,4 @@ services:
 networks:
   automationnet:
     external: true
+
