@@ -3,35 +3,38 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - master  # Cambia si tu rama se llama main
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up job
+        run: echo "Iniciando despliegue automático..."
+
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Add VPS to known_hosts
         run: |
+          mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Ensure target folder exists
+        run: |
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            mkdir -p /var/www/n8n-automatizacion
+          EOF
 
       - name: Sync files with rsync
         run: |
-          rsync -avz --delete --exclude='.git' --exclude='node_modules' ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/n8n-automatizacion
+          rsync -avz --delete --exclude='.git' --exclude='node_modules' ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/n8n-automatizacion/
 
       - name: Deploy with Docker
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
             cd /var/www/n8n-automatizacion
-            docker stop n8n-landing || true
-            docker rm n8n-landing || true
-            docker build -t n8n-landing .
-            docker run -d --name n8n-landing -p 3000:3000 n8n-landing
+            docker compose -f docker-compose.yml down
+            docker compose -f docker-compose.yml up -d --build
           EOF
-
-
-
-
-
