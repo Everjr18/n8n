@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: deploy
 
 on:
   push:
@@ -23,16 +23,14 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Copy files to VPS
+      - name: Sync project files
         run: |
-          rsync -avz --delete --exclude='.git' --exclude='node_modules' ./ \
-          ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/n8n-automatizacion/
+          rsync -avz --delete --exclude='.git' --exclude='node_modules' ./automatizacion/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/n8n-automatizacion/
 
       - name: Deploy with Docker Swarm
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            cd /var/www/n8n-automatizacion/automatizacion
             docker stack rm n8n-landing || true
             sleep 5
-            docker stack deploy -c docker-compose.yml n8n-landing
+            docker stack deploy -c /var/www/n8n-automatizacion/automatizacion/docker-compose.yml n8n-landing
           EOF
