@@ -16,7 +16,7 @@ const LandingN8n: React.FC<Props> = ({ dict }) => {
 				<p className="text-lg mb-6">{dict.description}</p>
 				<Button size="lg" className="text-lg px-6 py-3" asChild>
 					<a
-						href="https://wa.me/573003774663?text=Hola!%20Estoy%20interesado%20en%20automatizar%20mi%20negocio%20con%20n8n"
+						href="https://wa.me/573053335489?text=Hola!%20Estoy%20interesado%20en%20automatizar%20mi%20negocio%20con%20n8n"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
