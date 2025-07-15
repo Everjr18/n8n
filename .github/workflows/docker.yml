@@ -30,7 +30,7 @@ jobs:
       - name: Build and Deploy with Docker Swarm
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            cd /var/www/n8n-automatizacion
+            cd /var/www/n8n-automatizacion/automatizacion
             docker build -t n8n-landing:latest .
             docker stack rm n8n-landing || true
             sleep 5
