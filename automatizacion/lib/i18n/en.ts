@@ -26,6 +26,7 @@ export const en = {
 			"Google Sheets or database updates",
 			"Custom logical workflows",
 		],
+		callToAction: "Don't see what you need? Let's talk",
 	},
 
 	plans: {
@@ -58,6 +59,8 @@ export const en = {
 It queries the database, updates Google Sheets, and sends an email to the client.
 It reduces manual work and avoids mistakes.`,
 				image: "agregar-compra-flow.jpg",
+				download: "see full image",
+				message: "I want something like this 🚀",
 			},
 			{
 				id: "rag",
@@ -65,7 +68,9 @@ It reduces manual work and avoids mistakes.`,
 				short: "An edtech project links questions with posts using AI.",
 				full: `This automation generates embeddings from questions and links them with blog posts using ChromaDB.
 The result is a more relevant and intelligent search experience.`,
-				image: "rag.png",
+				image: "rag.jpg",
+				download: "see full image",
+				message: "I want something like this 🚀",
 			},
 			{
 				id: "desactivar",
@@ -73,7 +78,9 @@ The result is a more relevant and intelligent search experience.`,
 				short: "The system disables users when their plan expires.",
 				full: `It checks Google Sheets and the database. If the plan is expired, it deactivates the user and sends a notification email.
 Useful for managing subscriptions at scale.`,
-				image: "desactivar.png",
+				image: "desactivar.jpg",
+				download: "see full image",
+				message: "I want something like this 🚀",
 			},
 		],
 	},
@@ -81,10 +88,10 @@ Useful for managing subscriptions at scale.`,
 	trust: {
 		title: "Why trust us?",
 		list: [
-			"🔒 Guaranteed privacy: your data is safe",
-			"🧑‍💻 100% no-code: just tell us what you need",
-			"🎯 1-on-1 personalized attention",
-			"🚀 No risk: we show you before delivering",
+			"Guaranteed privacy: your data stays safe",
+			"100% no-code: just tell us what you need",
+			"1-on-1 guidance: we support you end-to-end",
+			"No risk: review results together before delivery",
 		],
 	},
 

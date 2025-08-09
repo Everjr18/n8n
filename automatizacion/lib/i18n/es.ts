@@ -24,6 +24,7 @@ export const es = {
 			"Actualización de Google Sheets o bases de datos",
 			"Flujos lógicos personalizados",
 		],
+		callToAction: "¿No ves lo que necesitas? Hablemos",
 	},
 	plans: {
 		title: "Planes de automatización",
@@ -54,6 +55,8 @@ export const es = {
 Consulta la base de datos, actualiza Google Sheets y envía un correo al cliente.
 Ahorra trabajo manual y reduce errores.`,
 				image: "agregar-compra-flow.jpg",
+				download: "ver imagen completa",
+				message: "Quiero algo así 🚀",
 			},
 			{
 				id: "rag",
@@ -61,7 +64,9 @@ Ahorra trabajo manual y reduce errores.`,
 				short: "Un proyecto educativo relaciona preguntas con posts usando IA.",
 				full: `Este flujo genera embeddings de preguntas y las relaciona con posts usando ChromaDB.
 La búsqueda es más precisa y útil para los usuarios.`,
-				image: "rag.png",
+				image: "rag.jpg",
+				download: "ver imagen completa",
+				message: "Quiero algo así 🚀",
 			},
 			{
 				id: "desactivar",
@@ -69,17 +74,19 @@ La búsqueda es más precisa y útil para los usuarios.`,
 				short: "El sistema desactiva usuarios cuando vence su plan.",
 				full: `Consulta Google Sheets y la base de datos. Si el plan expiró, desactiva el usuario y envía un aviso por correo.
 Automatización útil para gestión de suscripciones.`,
-				image: "desactivar.png",
+				image: "desactivar.jpg",
+				download: "ver imagen completa",
+				message: "Quiero algo así 🚀",
 			},
 		],
 	},
 	trust: {
 		title: "¿Por qué confiar en nosotros?",
 		list: [
-			"🔒 Privacidad garantizada: tus datos están seguros",
-			"🧑‍💻 100% sin código: solo dinos qué necesitas",
-			"🎯 Atención personalizada 1 a 1",
-			"🚀 Sin riesgo: te mostramos antes de entregar",
+			"Privacidad garantizada: tus datos están seguros",
+			"100% sin código: solo dinos qué necesitas",
+			"Atención personalizada 1 a 1: te acompañamos de principio a fin",
+			"Sin riesgo: vemos el resultado juntos antes de entregar",
 		],
 	},
 	footer: "Automatizaciones con n8n. Todos los derechos reservados.",

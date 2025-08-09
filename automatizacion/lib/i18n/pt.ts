@@ -25,6 +25,7 @@ export const pt = {
 			"Atualizações de Google Sheets ou banco de dados",
 			"Fluxos lógicos personalizados",
 		],
+		callToAction: "Não vê o que precisa? Vamos conversar",
 	},
 	plans: {
 		title: "Planos de Automação",
@@ -52,6 +53,8 @@ export const pt = {
 Consulta o banco de dados, atualiza o Google Sheets e envia um e-mail ao cliente.
 Reduz o trabalho manual e evita erros.`,
 				image: "agregar-compra-flow.jpg",
+				download: "ver imagem completa",
+				message: "Quero algo assim 🚀",
 			},
 			{
 				id: "rag",
@@ -59,7 +62,9 @@ Reduz o trabalho manual e evita erros.`,
 				short: "Projeto educacional vincula perguntas com posts usando IA.",
 				full: `Esse fluxo gera embeddings e os relaciona com posts do blog usando ChromaDB.
 Melhora a relevância nas buscas dos usuários.`,
-				image: "rag.png",
+				image: "rag.jpg",
+				download: "ver imagem completa",
+				message: "Quero algo assim 🚀",
 			},
 			{
 				id: "desactivar",
@@ -67,17 +72,19 @@ Melhora a relevância nas buscas dos usuários.`,
 				short: "O sistema desativa usuários ao final do plano.",
 				full: `Consulta Google Sheets e o banco de dados. Se o plano expirou, desativa o usuário e envia um e-mail.
 Ideal para automação de assinaturas.`,
-				image: "desactivar.png",
+				image: "desactivar.jpg",
+				download: "ver imagem completa",
+				message: "Quero algo assim 🚀",
 			},
 		],
 	},
 	trust: {
 		title: "Por que confiar em nós?",
 		list: [
-			"🔒 Privacidade garantida: seus dados estão seguros",
-			"🧑‍💻 100% sem código: apenas diga o que precisa",
-			"🎯 Atendimento personalizado 1 a 1",
-			"🚀 Sem risco: mostramos antes de entregar",
+			"Privacidade garantida: seus dados ficam seguros",
+			"100% sem código: diga o que precisa",
+			"Atendimento 1 a 1: acompanhamos de ponta a ponta",
+			"Sem risco: revisamos o resultado antes da entrega",
 		],
 	},
 	footer: "Automatizações com n8n. Todos os direitos reservados.",
