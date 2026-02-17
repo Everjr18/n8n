@@ -1,93 +1,171 @@
-export const es = {
+import type { LandingDictionary } from "./types";
+
+export const es: LandingDictionary = {
 	hero: {
-		title: "Automatiza tu negocio con n8n",
-		description:
-			"Crea flujos automáticos para ahorrar tiempo, reducir errores y escalar tu operación.",
-		contactButton: "Escríbenos por WhatsApp",
-		contactSubtext: "Sin compromiso — cuéntanos qué necesitas automatizar.",
-		trustNote: "Confiado por emprendedores y pymes en toda LATAM",
+		badge: "Automatizaciones n8n para equipos pequeños",
+		title: "Convierte tareas manuales en flujos que trabajan solos",
+		subtitle:
+			"Implementa automatizaciones listas para producción, reduce errores operativos y libera tiempo para vender más.",
+		outcomes: [
+			"Ahorra entre 6 y 20 horas por semana en tareas repetitivas.",
+			"Activa correos, alertas y actualizaciones sin seguimiento manual.",
+			"Escala operaciones sin sumar herramientas complejas.",
+		],
+		primaryCta: "Ver planes",
+		secondaryCta: "Cómo funciona",
+		trustNote: "Más de 80 flujos implementados en proyectos LATAM.",
+	},
+	proof: {
+		title: "Resultados que importan",
+		items: [
+			{
+				title: "Implementación rápida",
+				description: "Primer flujo funcional en pocos días, no semanas.",
+			},
+			{
+				title: "Menos errores humanos",
+				description: "Validaciones y notificaciones automáticas en puntos críticos.",
+			},
+			{
+				title: "Soporte continuo",
+				description: "Acompañamiento para ajustes y mejoras después del go-live.",
+			},
+		],
 	},
 	howItWorks: {
-		title: "¿Cómo funciona?",
+		title: "Cómo funciona",
 		steps: [
-			"🧠 Hablamos sobre tu necesidad",
-			"🔧 Diseñamos un flujo automatizado",
-			"🚀 Lo integramos y queda funcionando",
-		],
-	},
-	services: {
-		title: "¿Qué puedo automatizar por ti?",
-		list: [
-			"Automatización de tareas repetitivas",
-			"Emails y alertas automáticas",
-			"Integración con WhatsApp y Telegram",
-			"Actualización de Google Sheets o bases de datos",
-			"Flujos lógicos personalizados",
-		],
-		callToAction: "¿No ves lo que necesitas? Hablemos",
-	},
-	plans: {
-		title: "Planes de automatización",
-		options: [
 			{
-				title: "🔹 Plan Básico",
-				desc: "1 flujo simple (Google Sheets, email)",
+				title: "1. Diagnóstico",
+				description:
+					"Revisamos tu proceso actual y definimos el primer caso de mayor impacto.",
 			},
 			{
-				title: "🔸 Plan Pro",
-				desc: "Hasta 5 automatizaciones con bases de datos",
+				title: "2. Implementación",
+				description:
+					"Construimos el flujo en n8n, conectamos tus herramientas y hacemos pruebas.",
 			},
 			{
-				title: "🔧 Plan Personalizado",
-				desc: "Diseño e integración según tus necesidades",
+				title: "3. Activación",
+				description:
+					"Publicamos en producción, medimos resultados y ajustamos si hace falta.",
 			},
 		],
 	},
-	cases: {
-		title: "Casos reales de automatización",
-		cases: [
+	includes: {
+		title: "Qué incluye",
+		items: [
+			"Automatizaciones con n8n listas para producción.",
+			"Conexión con formularios, CRM, correo, Sheets o APIs.",
+			"Control de errores y alertas cuando algo falla.",
+			"Documentación breve para operar sin depender del desarrollador.",
+			"Sesión de onboarding para tu equipo.",
+		],
+	},
+	pricing: {
+		title: "Planes de suscripción",
+		subtitle:
+			"Máximo tres opciones para decidir rápido. Sin contratos largos ni costos ocultos.",
+		recommendedLabel: "Recomendado",
+		afterPayment:
+			"Después del pago: activamos tu acceso, recibes onboarding y empezamos implementación.",
+		plans: [
 			{
-				id: "ecommerce",
-				title: "🛒 E-commerce",
-				short:
-					"Una tienda automatizó el registro de compras y ahorra 15 horas semanales.",
-				full: `Este flujo se activa cada vez que se realiza una nueva compra.
-Consulta la base de datos, actualiza Google Sheets y envía un correo al cliente.
-Ahorra trabajo manual y reduce errores.`,
-				image: "agregar-compra-flow.jpg",
-				download: "ver imagen completa",
-				message: "Quiero algo así 🚀",
+				tier: "tier1",
+				name: "Starter",
+				price: "$49",
+				period: "/mes",
+				audience: "Para quién es: negocio con 1 flujo clave por automatizar.",
+				bullets: [
+					"1 flujo activo",
+					"Soporte por email",
+					"Actualizaciones menores",
+				],
+				cta: "Elegir Starter",
 			},
 			{
-				id: "rag",
-				title: "🧠 Vinculación RAG",
-				short: "Un proyecto educativo relaciona preguntas con posts usando IA.",
-				full: `Este flujo genera embeddings de preguntas y las relaciona con posts usando ChromaDB.
-La búsqueda es más precisa y útil para los usuarios.`,
-				image: "rag.jpg",
-				download: "ver imagen completa",
-				message: "Quiero algo así 🚀",
+				tier: "tier2",
+				name: "Growth",
+				price: "$99",
+				period: "/mes",
+				audience: "Para quién es: equipo con varios procesos y prioridad en velocidad.",
+				bullets: [
+					"Hasta 3 flujos activos",
+					"Soporte prioritario",
+					"Optimización mensual",
+				],
+				cta: "Elegir Growth",
+				recommended: true,
 			},
 			{
-				id: "desactivar",
-				title: "⏳ Desactivación automática",
-				short: "El sistema desactiva usuarios cuando vence su plan.",
-				full: `Consulta Google Sheets y la base de datos. Si el plan expiró, desactiva el usuario y envía un aviso por correo.
-Automatización útil para gestión de suscripciones.`,
-				image: "desactivar.jpg",
-				download: "ver imagen completa",
-				message: "Quiero algo así 🚀",
+				tier: "tier3",
+				name: "Scale",
+				price: "$199",
+				period: "/mes",
+				audience:
+					"Para quién es: operación con múltiples integraciones y mayor volumen.",
+				bullets: [
+					"Hasta 8 flujos activos",
+					"Soporte en horario ampliado",
+					"Roadmap trimestral",
+				],
+				cta: "Elegir Scale",
 			},
 		],
 	},
-	trust: {
-		title: "¿Por qué confiar en nosotros?",
-		list: [
-			"Privacidad garantizada: tus datos están seguros",
-			"100% sin código: solo dinos qué necesitas",
-			"Atención personalizada 1 a 1: te acompañamos de principio a fin",
-			"Sin riesgo: vemos el resultado juntos antes de entregar",
+	faq: {
+		title: "Preguntas frecuentes",
+		items: [
+			{
+				question: "¿Necesito saber programar?",
+				answer:
+					"No. Tú defines el resultado y nosotros implementamos la automatización.",
+			},
+			{
+				question: "¿Puedo cancelar cuando quiera?",
+				answer: "Sí. La suscripción es mensual y puedes cancelarla desde PayPal.",
+			},
+			{
+				question: "¿Qué pasa si un flujo falla?",
+				answer:
+					"Configuramos alertas y revisamos la incidencia según el plan contratado.",
+			},
+			{
+				question: "¿Incluye onboarding?",
+				answer:
+					"Sí. Después del pago coordinamos una sesión inicial para activar el trabajo.",
+			},
 		],
+	},
+	finalCta: {
+		title: "Empieza con el flujo que más impacto tiene hoy",
+		description:
+			"Selecciona tu plan y activa la suscripción en minutos. Si tienes dudas, te ayudamos a elegir.",
+		primaryCta: "Ir a checkout",
+		secondaryCta: "Hablar por WhatsApp",
+	},
+	checkout: {
+		title: "Activa tu suscripción",
+		subtitle:
+			"Selecciona plan, confirma tu correo y completa el pago con PayPal.",
+		emailLabel: "Correo para activar el acceso",
+		emailPlaceholder: "tu@empresa.com",
+		secureNote: "Pago seguro procesado por PayPal.",
+		backToPricing: "Volver a planes",
+		paypalDisclaimer:
+			"También puedes ver opción de tarjeta (Guest Checkout), según tu país y evaluación de riesgo de PayPal.",
+	},
+	success: {
+		title: "Pago recibido",
+		subtitle:
+			"Tu suscripción está en proceso de activación automática. Te notificamos cuando quede activa.",
+		statusPending: "Estado actual",
+		dashboardCta: "Volver al inicio",
+	},
+	cancel: {
+		title: "Pago cancelado",
+		subtitle: "No se realizó ningún cobro. Puedes volver a intentarlo cuando quieras.",
+		retryCta: "Volver a checkout",
 	},
 	footer: "Automatizaciones con n8n. Todos los derechos reservados.",
 };

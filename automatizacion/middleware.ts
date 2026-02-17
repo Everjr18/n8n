@@ -6,9 +6,15 @@ const DEFAULT_LANG = "es";
 
 export function middleware(req: NextRequest) {
 	const { pathname } = req.nextUrl;
+	const excludedPrefixes = ["/_next", "/api", "/checkout", "/success", "/cancel"];
 
 	// Ignore _next or public files
-	if (pathname.startsWith("/_next") || pathname.includes(".")) return;
+	if (excludedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
+		return NextResponse.next();
+	}
+	if (pathname.includes(".")) {
+		return NextResponse.next();
+	}
 
 	// If URL already has a locale prefix, skip
 	const pathnameIsMissingLocale = SUPPORTED_LANGS.every(
