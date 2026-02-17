@@ -1,73 +1,61 @@
 "use client";
 
+import Link from "next/link";
+import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import type React from "react";
+import type { LandingDictionary } from "@/lib/i18n/types";
+import { trackEvent } from "@/lib/analytics/track";
 
 type Props = {
-	dict: {
-		hero: {
-			title: string;
-			description: string;
-			contactButton: string;
-			contactSubtext?: string;
-			trustNote?: string;
-		};
-	};
+	dict: LandingDictionary;
+	checkoutHref: string;
 };
 
-function HeroSection({ dict }: Props) {
-	const { title, description, contactButton, contactSubtext, trustNote } =
-		dict.hero;
-
+export default function HeroSection({ dict, checkoutHref }: Props) {
 	return (
-		<section className="min-h-[70vh] flex flex-col justify-center items-center bg-white px-6 text-center text-gray-800">
-			<motion.h1
-				className="text-4xl md:text-5xl font-bold mb-4 max-w-2xl leading-tight"
-				initial={{ opacity: 0, y: -20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6 }}
-			>
-				🚀 {title}
-			</motion.h1>
+		<section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-white to-white px-4 pb-14 pt-10 sm:px-6 lg:px-8">
+			<div className="pointer-events-none absolute -right-20 top-8 h-52 w-52 rounded-full bg-blue-200/40 blur-3xl" />
+			<div className="pointer-events-none absolute -left-20 bottom-0 h-52 w-52 rounded-full bg-cyan-200/40 blur-3xl" />
 
-			<motion.p
-				className="text-lg md:text-xl text-gray-600 mb-6 max-w-xl"
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6, delay: 0.2 }}
-			>
-				{description}
-			</motion.p>
+			<div className="mx-auto max-w-5xl text-center">
+				<p className="mb-4 inline-flex rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white">
+					{dict.hero.badge}
+				</p>
+				<h1 className="text-balance text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
+					{dict.hero.title}
+				</h1>
+				<p className="mx-auto mt-4 max-w-2xl text-pretty text-base text-slate-600 sm:text-lg">
+					{dict.hero.subtitle}
+				</p>
 
-			<motion.div
-				initial={{ opacity: 0, scale: 0.95 }}
-				animate={{ opacity: 1, scale: 1 }}
-				transition={{ duration: 0.4, delay: 0.4 }}
-				className="flex flex-col items-center"
-			>
-				<Button
-					size="lg"
-					className="text-lg px-6 py-3 shadow-lg hover:scale-105 transition-transform"
-					asChild
-				>
-					<a
-						href="https://wa.me/573053335489?text=Hola!%20Estoy%20interesado%20en%20automatizar%20mi%20negocio%20con%20n8n"
-						target="_blank"
-						rel="noopener noreferrer"
+				<ul className="mx-auto mt-6 grid max-w-2xl gap-3 text-left">
+					{dict.hero.outcomes.map((outcome) => (
+						<li
+							key={outcome}
+							className="flex items-start gap-2 rounded-md border bg-white/70 p-3 text-sm text-slate-700"
+						>
+							<CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+							<span>{outcome}</span>
+						</li>
+					))}
+				</ul>
+
+				<div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+					<Button
+						asChild
+						size="lg"
+						className="w-full sm:w-auto"
+						onClick={() => trackEvent("hero_click_primary_cta")}
 					>
-						💬 {contactButton}
-					</a>
-				</Button>
+						<Link href={checkoutHref}>{dict.hero.primaryCta}</Link>
+					</Button>
+					<Button asChild size="lg" variant="ghost" className="w-full sm:w-auto">
+						<a href="#how-it-works">{dict.hero.secondaryCta}</a>
+					</Button>
+				</div>
 
-				{contactSubtext && (
-					<p className="text-sm text-gray-500 mt-2">{contactSubtext}</p>
-				)}
-			</motion.div>
-
-			{trustNote && <p className="mt-6 text-sm text-gray-500">{trustNote}</p>}
+				<p className="mt-5 text-xs text-slate-500">{dict.hero.trustNote}</p>
+			</div>
 		</section>
 	);
 }
-
-export default HeroSection;

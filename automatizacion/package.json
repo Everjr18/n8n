@@ -6,7 +6,9 @@
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start -p 3000",
-		"lint": "next lint"
+		"lint": "next lint",
+		"typecheck": "tsc --noEmit",
+		"paypal:bootstrap": "node scripts/paypal/create-product-and-plans.mjs"
 	},
 	"dependencies": {
 		"@radix-ui/react-aspect-ratio": "^1.1.7",
@@ -14,12 +16,10 @@
 		"@radix-ui/react-slot": "^1.2.3",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
-		"framer-motion": "^12.23.12",
 		"lucide-react": "^0.525.0",
-		"next": "15.3.5",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0",
-		"react-floating-whatsapp": "^5.0.8",
+		"next": "15.5.12",
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0",
 		"tailwind-merge": "^3.3.1"
 	},
 	"devDependencies": {
@@ -29,7 +29,7 @@
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"eslint": "^9",
-		"eslint-config-next": "15.3.5",
+		"eslint-config-next": "15.5.12",
 		"tailwindcss": "^4",
 		"tw-animate-css": "^1.3.5",
 		"typescript": "^5"

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	title: "Automatizaciones con n8n",
 	description:
-		"Automatiza procesos de tu negocio sin escribir código. Flujos personalizados con n8n: correos, WhatsApp, pagos, bases de datos y más.",
+		"Automatiza procesos críticos con n8n, reduce tareas manuales y activa tu plan mensual en línea con suscripción PayPal.",
 	icons: {
 		icon: "/favicon.ico",
 	},

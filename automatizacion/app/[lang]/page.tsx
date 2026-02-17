@@ -10,7 +10,7 @@ export default async function Page({ params }: PageProps) {
 	const dict =
 		translations[paramsLang as keyof typeof translations] ?? translations.es;
 
-	return <LandingN8n dict={dict} />;
+	return <LandingN8n dict={dict} lang={paramsLang} />;
 }
 export function generateStaticParams() {
 	return [{ lang: "en" }, { lang: "es" }, { lang: "pt" }];
