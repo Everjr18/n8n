@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import LanguageSwitcher from "@/components/language-switcher";
 
 export const metadata: Metadata = {
-	title: "Automatizaciones con n8n",
+	title: "Automatizacion para consultorios",
 	description:
-		"Automatiza procesos de tu negocio sin escribir código. Flujos personalizados con n8n: correos, WhatsApp, pagos, bases de datos y más.",
+		"Landing WhatsApp-first para consultorios privados: menos no-shows y mas citas confirmadas con n8n.",
 };
 
 export default async function LangLayout({

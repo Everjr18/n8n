@@ -21,9 +21,13 @@ export default function LanguageSwitcher() {
 	};
 
 	return (
-		<div className="text-sm text-right p-4">
+		<div className="px-4 pt-4 text-right">
+			<label htmlFor="language-switcher" className="sr-only">
+				Cambiar idioma
+			</label>
 			<select
-				className="border border-gray-300 rounded px-2 py-1"
+				id="language-switcher"
+				className="h-8 rounded-md border border-slate-300 bg-white px-2 text-xs text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
 				defaultValue={pathname.split("/")[1] || "es"}
 				onChange={(e) => handleChange(e.target.value)}
 			>
