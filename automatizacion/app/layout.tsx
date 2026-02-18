@@ -12,9 +12,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Automatizaciones con n8n",
+	title: "Automatizacion para consultorios | WhatsApp-first",
 	description:
-		"Automatiza procesos de tu negocio sin escribir código. Flujos personalizados con n8n: correos, WhatsApp, pagos, bases de datos y más.",
+		"Reducimos ausencias y llenamos agenda en consultorios privados con automatizacion por WhatsApp y n8n.",
 	icons: {
 		icon: "/favicon.ico",
 	},

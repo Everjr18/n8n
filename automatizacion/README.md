@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Landing WhatsApp-first para consultorios
 
-## Getting Started
+Proyecto en Next.js + TypeScript + Tailwind + shadcn/ui, enfocado en convertir visitas en conversaciones calificadas por WhatsApp.
 
-First, run the development server:
+## Objetivo
+
+- Mensaje claro en 3-5 segundos: reducir ausencias y llenar agenda.
+- CTA dominante en toda la landing: `Hablar por WhatsApp`.
+- Cierre comercial manual por diagnostico en WhatsApp (sin checkout, sin suscripciones automaticas).
+
+## Flujo de secciones
+
+1. Hero
+2. Proof / Resultados
+3. Que automatizamos
+4. Paquetes
+5. Como funciona
+6. FAQ
+7. CTA final
+
+## Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+
+## Desarrollo local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App local en [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tracking implementado (sin librerias pesadas)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Eventos:
 
-## Learn More
+- `landing_view`
+- `hero_whatsapp_click`
+- `pricing_view`
+- `package_whatsapp_click_starter`
+- `package_whatsapp_click_pro`
+- `package_whatsapp_click_full`
+- `faq_open`
 
-To learn more about Next.js, take a look at the following resources:
+Implementacion:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `window.dataLayer` (si existe)
+- `window.gtag` (si existe)
+- `CustomEvent("landing:track")`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Mensajes de WhatsApp por paquete
 
-## Deploy on Vercel
+- Starter:
+  - `"Hola, tengo un consultorio y quiero automatizar respuesta + confirmacion de citas. Me interesa Starter..."`
+- Pro:
+  - `"Hola, quiero reducir ausencias con confirmacion + recordatorios + seguimiento. Me interesa Pro..."`
+- Full:
+  - `"Hola, quiero el sistema completo (lead->cita->recordatorio->post-cita). Me interesa Full..."`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Nota de datos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- No se inventan metricas.
+- Los mini-casos usan placeholders para que completes resultados reales.
+- Solo se contemplan datos operativos (nombre, contacto, estado de cita).
+- No se almacenan datos clinicos sensibles.
+
+## QA rapido
+
+- Hero muestra H1 + CTA sin scroll excesivo en movil.
+- No hay overflow horizontal.
+- Solo hay un CTA principal repetido estrategicamente.
+- FAQ abre/cierra con teclado y mouse.
+- Eventos se disparan en hero, paquetes, pricing y FAQ.
